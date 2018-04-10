@@ -1,0 +1,59 @@
+body 
+{
+	background-color: #000000;
+	color:#212121;
+	font-family: Comic Sans, Comic Sans MS, cursive;
+}
+	
+	
+b
+{
+	text-align: center;
+	color: #ffffff;
+	font-size: 5em;
+}
+
+.text-space
+{
+	margin-top: 5em;
+
+}
+
+.other-space
+{
+	margin-top: 2em;
+}
+
+p
+{
+	text-align: center;
+	color: #ffffff;
+	font-size: 1.5em;
+}
+
+hr {
+ border:none;
+ height: 20px;
+    width: 90%;
+    height: 50px;
+    margin-top: 0;
+     border-bottom: 1px solid #1f1209 ; 
+    box-shadow: 0 20px 5px -20px #333;
+margin: -50px auto 10 px;
+}
+
+h1
+{
+	color: #ff0000;
+}
+
+h3
+{
+	color: #ffffff;
+}
+
+li
+{
+	color: #ffffff;
+	font-size: 2em;
+}

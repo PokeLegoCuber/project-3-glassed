@@ -75,12 +75,6 @@ public class PuzzlerFrame extends Frame {
 		puzzler = puzzlerMaker.make();
 		puzzlerLabel.setText(puzzler.getMessage());
 		answeringAttempts = 0;
-	    Button exitBtn = new Button("Exit");
-	    exitBtn.setOnAction(e -> System.exit(0));
-	    
-	    
-	    VBox root = new VBox();
-	    root.getChildren().add(exitBtn);
 		stage.setScene(scene);
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_PUZZLER_KEY));
 		stage.show();
@@ -88,13 +82,15 @@ public class PuzzlerFrame extends Frame {
 
 
 	private void buildScene() {
+	    Button exitBtn = new Button("Exit");
+	    exitBtn.setOnAction(e -> System.exit(0));
 		VBox vbox = new VBox();
 		vbox.setPadding(GameSettings.PADDING);
 		vbox.setSpacing(GameSettings.V_SPACING);
 		puzzlerLabel = new Label(I18n.getBundle().getString(MSG_GAME_DESCRIPTION_KEY));
 		puzzlerAnswer = new TextField();
 		answerButton = new Button(I18n.getBundle().getString(MSG_ANSWER_PUZZLER_KEY));
-		vbox.getChildren().addAll(puzzlerLabel, puzzlerAnswer, answerButton);
+		vbox.getChildren().addAll(puzzlerLabel, puzzlerAnswer, answerButton,exitBtn);
 		scene = new Scene(vbox, GameSettings.SCENE_WIDTH, GameSettings.CANVAS_HEIGHT);
 	}
 }

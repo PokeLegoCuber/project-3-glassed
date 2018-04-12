@@ -1,5 +1,8 @@
 package edu.cuny.brooklyn.project.frame;
 
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+
 public class GameFrame {
 	private FlashFrame flashFrame;
 	private PuzzlerFrame puzzlerFrame;
@@ -16,10 +19,12 @@ public class GameFrame {
 	}
 	
 	public PuzzlerFrame getPuzzlerFrame() {
+
 		return puzzlerFrame;
 	}
 
 	public TreasureFrame getTreasureFrame() {
+
 		return treasureFrame;
 	}
 }

@@ -75,10 +75,17 @@ public class PuzzlerFrame extends Frame {
 		puzzler = puzzlerMaker.make();
 		puzzlerLabel.setText(puzzler.getMessage());
 		answeringAttempts = 0;
+	    Button exitBtn = new Button("Exit");
+	    exitBtn.setOnAction(e -> System.exit(0));
+	    
+	    
+	    VBox root = new VBox();
+	    root.getChildren().add(exitBtn);
 		stage.setScene(scene);
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_PUZZLER_KEY));
 		stage.show();
 	}
+
 
 	private void buildScene() {
 		VBox vbox = new VBox();

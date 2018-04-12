@@ -92,6 +92,12 @@ public class TreasureFrame extends Frame {
 
 	@Override
 	public void show(Stage stage) {
+	    Button exitBtn = new Button("Exit");
+	    exitBtn.setOnAction(e -> System.exit(0));
+	    
+	    
+	    VBox root = new VBox();
+	    root.getChildren().add(exitBtn);
 		stage.setScene(scene);
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_TREASURE_HUNT_KEY));
 		stage.show();

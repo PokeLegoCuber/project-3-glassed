@@ -8,14 +8,20 @@ import edu.cuny.brooklyn.project.message.I18n;
 import edu.cuny.brooklyn.project.score.Scorer;
 import edu.cuny.brooklyn.project.treasure.TreasureField;
 import javafx.beans.InvalidationListener;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -69,6 +75,11 @@ public class TreasureFrame extends Frame {
 		xyInputPane = buildXYInputPane();
 		borderPane.setBottom(xyInputPane);
 		
+		pane.setOnMouseClicked(e -> { 
+		xPosTreasure.setText("" + (int)e.getX());//to convert to string
+		yPosTreasure.setText("" + (int)e.getY());
+		});
+
 		scene = new Scene(borderPane);
 	}
 	
@@ -153,14 +164,21 @@ public class TreasureFrame extends Frame {
 		hbox.setAlignment(Pos.CENTER);
 		hbox.setSpacing(GameSettings.H_SPACING);
 		hbox.setPadding(GameSettings.PADDING);
-		
 		xPosTreasure = new TextField();
 		yPosTreasure = new TextField();
+		
+//		buildTreasureFieldPane().setOnMouseClicked(e -> { 
+//		//((TextInputControl) xyInputPane.getChildren().get(0)).
+//		xPosTreasure.setText("" + e.getX());//to convert to string
+//		//((TextInputControl) xyInputPane.getChildren().get(1)).
+//		yPosTreasure.setText("" + e.getY());
+//		});
+		
 		buttonTreasure = new Button(I18n.getBundle().getString(MSG_LOCATE_TREASURE_KEY));
 		buttonTreasure.setOnAction(e -> doTreasureLocationAction());
 		
 		hbox.getChildren().addAll(xPosTreasure, yPosTreasure, buttonTreasure);
-		
+
 		return hbox;
 	}
 	

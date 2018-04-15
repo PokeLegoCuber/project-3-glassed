@@ -18,7 +18,7 @@ public class GameSettings {
 	public final static int DEFAULT_TREASURE_VALUE = 1;
 	
 	// number of types of puzzlers
-	public final static int NUM_TYPES_OF_PUZZLERS = 1;
+	public final static int NUM_TYPES_OF_PUZZLERS = 2;
 	
 	// clue error
 	public static final int DEFAULT_CLUE_ERROR_INCREMENT = 2;

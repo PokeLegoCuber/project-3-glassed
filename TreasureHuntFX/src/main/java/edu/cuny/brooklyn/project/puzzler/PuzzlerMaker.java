@@ -7,12 +7,16 @@ public class PuzzlerMaker {
 	private final static Logger LOGGER = LoggerFactory.getLogger(PuzzlerMaker.class);
 	
 	public Puzzler make() {
-		int type = PuzzlerSettings.getRandomPuzzlerType();
+		int type = PuzzlerSettings.getPuzzlerType();
 		LOGGER.debug("Puzzler type = " + type);
 		Puzzler puzzler;
 		switch(type) {
 		case PuzzlerSettings.MATH_PUZZLER_SQRT: 
 			puzzler = new SqrtMathPuzzler(5, 15, 0.05);
+			LOGGER.debug("Made a math puzzler: message = " + puzzler.getMessage() + " and answer = " + puzzler.getAnswer());
+			break;
+		case PuzzlerSettings.MATH_PUZZLER_PRODUCT: 
+			puzzler = new ProductMathPuzzler(5, 25);
 			LOGGER.debug("Made a math puzzler: message = " + puzzler.getMessage() + " and answer = " + puzzler.getAnswer());
 			break;
 		default:

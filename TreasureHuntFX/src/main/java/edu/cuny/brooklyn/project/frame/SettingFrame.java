@@ -57,12 +57,12 @@ public class SettingFrame extends Frame {
 		
 		difficultyLabel = new Label("difficulty:");
 		difficultyBox = new ComboBox<Integer>();
-		ObservableList<Integer> options = 
-		    FXCollections.observableArrayList(
-		        0,
-		        1,
-		        2
-		    );
+		
+		ObservableList<Integer> options = FXCollections.observableArrayList();
+		for(int i = 1; i <= GameSettings.NUM_TYPES_OF_PUZZLERS; i++) {
+			options.add(i);
+		}
+		    
 		difficultyBox.setItems(options);
 		difficultyBox.getSelectionModel().select(GameSettings.getDifficulty());
 

@@ -59,6 +59,15 @@ public class GameSettings {
 	public static boolean getFullscreen() {
 		return fullscreen;
 	}
+
+	public static void setDifficulty(int num) {
+		difficulty = num;
+	}
+	
+	public static int getDifficulty() {
+		return difficulty;
+	}
 	
 	private static boolean fullscreen = false;
+	private static int difficulty = 1;
 }

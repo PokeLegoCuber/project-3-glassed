@@ -26,6 +26,7 @@ public class PuzzlerFrame extends Frame {
 	private int  answeringAttempts;
 	private Scene scene;
 	private Label puzzlerLabel;
+	private Label difficultyLabel;
 	private TextField puzzlerAnswer;
 	private Button answerButton;
 	private TreasureFrame nextFrame;
@@ -72,6 +73,8 @@ public class PuzzlerFrame extends Frame {
 	
 	@Override
 	public void show(Stage stage) {
+		updateDifficultyLabel();
+		
 		puzzler = puzzlerMaker.make();
 		puzzlerLabel.setText(puzzler.getMessage());
 		answeringAttempts = 0;
@@ -89,9 +92,14 @@ public class PuzzlerFrame extends Frame {
 		vbox.setPadding(GameSettings.PADDING);
 		vbox.setSpacing(GameSettings.V_SPACING);
 		puzzlerLabel = new Label(I18n.getBundle().getString(MSG_GAME_DESCRIPTION_KEY));
+		difficultyLabel = new Label("difficulty: " + GameSettings.getDifficulty());
 		puzzlerAnswer = new TextField();
 		answerButton = new Button(I18n.getBundle().getString(MSG_ANSWER_PUZZLER_KEY));
-		vbox.getChildren().addAll(puzzlerLabel, puzzlerAnswer, answerButton,exitBtn);
+		vbox.getChildren().addAll(puzzlerLabel, difficultyLabel, puzzlerAnswer, answerButton,exitBtn);
 		scene = new Scene(vbox, GameSettings.SCENE_WIDTH, GameSettings.CANVAS_HEIGHT);
+	}
+	
+	private void updateDifficultyLabel() {
+		difficultyLabel.setText("difficulty: " + GameSettings.getDifficulty());
 	}
 }

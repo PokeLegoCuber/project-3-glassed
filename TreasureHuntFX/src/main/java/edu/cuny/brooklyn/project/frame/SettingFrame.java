@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -23,7 +24,7 @@ public class SettingFrame extends Frame {
 	private Label flashLabel;
 	private Button backButton;
 	private Label difficultyLabel;
-	private ComboBox<String> difficultyBox;
+	private ComboBox<Integer> difficultyBox;
 	private CheckBox fullscreenBox;
 	
 	public SettingFrame() {
@@ -31,18 +32,15 @@ public class SettingFrame extends Frame {
 	}
 
 	public void setNextFrameToShow(FlashFrame flashFrame, Stage stage) {
-		backButton.setOnAction(e -> flashFrame.show(stage));
+		backButton.setOnAction(e -> {
+			GameSettings.setDifficulty(difficultyBox.getValue());
+			GameSettings.setFullscreen(fullscreenBox.isSelected());
+			flashFrame.show(stage);
+		});
 	}
 	
 	@Override
 	public void show(Stage stage) {
-		fullscreenBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
-			@Override
-			public void changed(ObservableValue<? extends Boolean> arg0, Boolean arg1, Boolean arg2) {
-				GameSettings.setFullscreen(arg2);
-			}
-	    });	
-		
 		stage.setScene(scene);
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_FLASH_KEY));
 		stage.show();
@@ -58,22 +56,23 @@ public class SettingFrame extends Frame {
 		flashLabel = new Label("Setting");
 		
 		difficultyLabel = new Label("difficulty:");
-		difficultyBox = new ComboBox<String>();
-		ObservableList<String> options = 
+		difficultyBox = new ComboBox<Integer>();
+		ObservableList<Integer> options = 
 		    FXCollections.observableArrayList(
-		        "easy",
-		        "normal",
-		        "hard"
+		        0,
+		        1,
+		        2
 		    );
 		difficultyBox.setItems(options);
-		difficultyBox.getSelectionModel().select(1);
+		difficultyBox.getSelectionModel().select(GameSettings.getDifficulty());
 
 		fullscreenBox = new CheckBox("start in fullscreen:");
 		fullscreenBox.setSelected(GameSettings.getFullscreen()); 
 
+		HBox difficultyHbox = new HBox(difficultyLabel, difficultyBox);
+		difficultyHbox.setSpacing(GameSettings.V_SPACING);
 		
-//		startButton = new Button(I18n.getBundle().getString(MSG_START_GAME_KEY));
-		vbox.getChildren().addAll(flashLabel, difficultyLabel, difficultyBox, fullscreenBox, backButton);
+		vbox.getChildren().addAll(flashLabel, difficultyHbox, fullscreenBox, backButton);
 		scene = new Scene(vbox, GameSettings.SCENE_WIDTH, GameSettings.CANVAS_HEIGHT);
 	}
 

@@ -76,6 +76,7 @@ public class PuzzlerFrame extends Frame {
 		puzzlerLabel.setText(puzzler.getMessage());
 		answeringAttempts = 0;
 		stage.setScene(scene);
+		stage.setFullScreen(GameSettings.getFullscreen());
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_PUZZLER_KEY));
 		stage.show();
 	}

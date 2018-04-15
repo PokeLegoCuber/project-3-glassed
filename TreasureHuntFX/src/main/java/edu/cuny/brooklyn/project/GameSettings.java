@@ -51,4 +51,14 @@ public class GameSettings {
 	public static final Color DEFAULT_TREASURE_CELL_COLOR = Color.GOLD;
 	
 	public static final String DEFAULT_CANVAS_HOLDER_STYLE = "-fx-background-color:white";
+	
+	public static void setFullscreen(boolean bool) {
+		fullscreen = bool;
+	}
+	
+	public static boolean getFullscreen() {
+		return fullscreen;
+	}
+	
+	private static boolean fullscreen = false;
 }

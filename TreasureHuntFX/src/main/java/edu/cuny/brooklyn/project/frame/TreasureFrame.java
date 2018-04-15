@@ -42,7 +42,7 @@ public class TreasureFrame extends Frame {
 	private int puzzlerAttempts;
 	private TreasureField treasureField;
 	
-	private Scene scene;
+	private BorderPane root;
 	private Label totalScoreLabel;
 	private Label roundScoreLabel;
 	
@@ -80,7 +80,7 @@ public class TreasureFrame extends Frame {
 		yPosTreasure.setText("" + (int)e.getY());
 		});
 
-		scene = new Scene(borderPane);
+		root = borderPane;
 	}
 	
 	public TreasureField getTreasureField() {
@@ -107,10 +107,11 @@ public class TreasureFrame extends Frame {
 	    exitBtn.setOnAction(e -> System.exit(0));
 	    
 	    
-	    VBox root = new VBox();
+	    //VBox root = new VBox();
 	    //root.getChildren().addAll(exitBtn);
 	    //Scene scene= new Scene(root,-100,100);
-		stage.setScene(scene);
+		stage.getScene().setRoot(root);
+		// stage.setFullScreen(GameSettings.getFullscreen());
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_TREASURE_HUNT_KEY));
 		stage.show();
 	}

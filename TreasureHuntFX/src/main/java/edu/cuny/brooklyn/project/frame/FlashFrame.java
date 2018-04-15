@@ -16,6 +16,7 @@ public class FlashFrame extends Frame {
 	private Scene scene;
 	private Label flashLabel;
 	private Button startButton;
+	private Button configButton;
 	
 	public FlashFrame() {
 		buildScene();
@@ -23,6 +24,10 @@ public class FlashFrame extends Frame {
 
 	public void setNextFrameToShow(PuzzlerFrame puzzlerFrame, Stage stage) {
 		startButton.setOnAction(e -> puzzlerFrame.show(stage));
+	}
+	
+	public void setConfigFrame(SettingFrame settingFrame, Stage stage) {
+		configButton.setOnAction(e -> settingFrame.show(stage));
 	}
 	
 	@Override
@@ -39,8 +44,9 @@ public class FlashFrame extends Frame {
 		vbox.setPadding(GameSettings.PADDING);
 		vbox.setSpacing(GameSettings.V_SPACING);
 		flashLabel = new Label(I18n.getBundle().getString(MSG_GAME_DESCRIPTION_KEY));
+		configButton = new Button("Config");
 		startButton = new Button(I18n.getBundle().getString(MSG_START_GAME_KEY));
-		vbox.getChildren().addAll(flashLabel, startButton,exitBtn);
+		vbox.getChildren().addAll(flashLabel, startButton, configButton, exitBtn);
 		scene = new Scene(vbox, GameSettings.SCENE_WIDTH, GameSettings.CANVAS_HEIGHT);
 	}
 

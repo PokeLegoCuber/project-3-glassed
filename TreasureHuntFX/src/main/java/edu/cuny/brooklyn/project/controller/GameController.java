@@ -4,6 +4,7 @@ import edu.cuny.brooklyn.project.GameSettings;
 import edu.cuny.brooklyn.project.frame.FlashFrame;
 import edu.cuny.brooklyn.project.frame.GameFrame;
 import edu.cuny.brooklyn.project.frame.PuzzlerFrame;
+import edu.cuny.brooklyn.project.frame.SettingFrame;
 import edu.cuny.brooklyn.project.frame.TreasureFrame;
 import edu.cuny.brooklyn.project.treasure.TreasureGenerator;
 import javafx.scene.image.Image;
@@ -23,13 +24,17 @@ public class GameController {
 		FlashFrame flashFrame = gameFrame.getFlashFrame();
 		PuzzlerFrame puzzlerFrame = gameFrame.getPuzzlerFrame();
 		TreasureFrame treasureFrame = gameFrame.getTreasureFrame();
+		SettingFrame settingFrame = gameFrame.getSettingFrame();
 		
 		TreasureGenerator treasureGenerator = new TreasureGenerator();
 		treasureFrame.getTreasureField().setTreasureGenerator(treasureGenerator);
 		treasureFrame.getTreasureField().placeTreasure();
 		
+		settingFrame.setNextFrameToShow(flashFrame, stage);
 		flashFrame.setNextFrameToShow(puzzlerFrame, stage);
+		flashFrame.setConfigFrame(settingFrame, stage);
 		puzzlerFrame.setNextFrameToShow(treasureFrame, stage);
+		
 
 		flashFrame.show(stage);
 	}

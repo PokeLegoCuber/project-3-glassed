@@ -7,11 +7,13 @@ public class GameFrame {
 	private FlashFrame flashFrame;
 	private PuzzlerFrame puzzlerFrame;
 	private TreasureFrame treasureFrame;
+	private SettingFrame settingFrame;
 	
 	public GameFrame() {
 		flashFrame = new FlashFrame();
 		puzzlerFrame = new PuzzlerFrame();
 		treasureFrame = new TreasureFrame();
+		settingFrame = new SettingFrame();
 	}
 	
 	public FlashFrame getFlashFrame() {
@@ -26,5 +28,9 @@ public class GameFrame {
 	public TreasureFrame getTreasureFrame() {
 
 		return treasureFrame;
+	}
+	
+	public SettingFrame getSettingFrame() {
+		return settingFrame;
 	}
 }

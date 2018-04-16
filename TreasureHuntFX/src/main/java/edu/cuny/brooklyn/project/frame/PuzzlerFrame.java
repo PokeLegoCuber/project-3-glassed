@@ -95,7 +95,7 @@ public class PuzzlerFrame extends Frame {
 		difficultyLabel = new Label("difficulty: " + GameSettings.getDifficulty());
 		puzzlerAnswer = new TextField();
 		answerButton = new Button(I18n.getBundle().getString(MSG_ANSWER_PUZZLER_KEY));
-		vbox.getChildren().addAll(puzzlerLabel, difficultyLabel, puzzlerAnswer, answerButton,exitBtn);
+		vbox.getChildren().addAll(puzzlerLabel, difficultyLabel, puzzlerAnswer, answerButton, exitBtn);
 		scene = new Scene(vbox, GameSettings.SCENE_WIDTH, GameSettings.CANVAS_HEIGHT);
 	}
 	

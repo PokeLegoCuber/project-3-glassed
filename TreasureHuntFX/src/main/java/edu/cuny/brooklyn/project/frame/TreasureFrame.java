@@ -137,8 +137,6 @@ public class TreasureFrame extends Frame {
 		canvasHolder.setStyle(GameSettings.DEFAULT_CANVAS_HOLDER_STYLE);
 		canvas = new Canvas(GameSettings.CANVAS_WIDTH, GameSettings.CANVAS_HEIGHT);
 		canvasHolder.getChildren().add(canvas);
-	    Button exitBtn = new Button("Exit");
-	    exitBtn.setOnAction(e -> System.exit(0));
 		
 		VBox vbox = new VBox();
 		vbox.setAlignment(Pos.CENTER);
@@ -150,7 +148,7 @@ public class TreasureFrame extends Frame {
 		responseLabel = new Label();
 		responseLabel.setWrapText(true);
 		responseLabel.setVisible(false);
-		vbox.getChildren().addAll(clueLabel, responseLabel,exitBtn);
+		vbox.getChildren().addAll(clueLabel, responseLabel);
 		
 		canvasHolder.getChildren().add(vbox);
 		
@@ -178,7 +176,10 @@ public class TreasureFrame extends Frame {
 		buttonTreasure = new Button(I18n.getBundle().getString(MSG_LOCATE_TREASURE_KEY));
 		buttonTreasure.setOnAction(e -> doTreasureLocationAction());
 		
-		hbox.getChildren().addAll(xPosTreasure, yPosTreasure, buttonTreasure);
+	    Button exitBtn = new Button("Exit");
+	    exitBtn.setOnAction(e -> System.exit(0));
+		
+		hbox.getChildren().addAll(xPosTreasure, yPosTreasure, buttonTreasure, exitBtn);
 
 		return hbox;
 	}

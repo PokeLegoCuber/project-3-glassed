@@ -1,5 +1,0 @@
-2018-04-15 21:07:57.474 [JavaFX Application Thread] INFO  edu.cuny.brooklyn.project.TreasureHuntFXApp edu.cuny.brooklyn.project.TreasureHuntFXApp.start(TreasureHuntFXApp.java:27) - TreasureHuntFXApp started.
-2018-04-15 21:07:57.926 [JavaFX Application Thread] DEBUG edu.cuny.brooklyn.project.treasure.TreasureField edu.cuny.brooklyn.project.treasure.TreasureField.placeTreasure(TreasureField.java:108) - Treasure is placed and bounded at (xLeft, yTop) -- (xRight, yBottom) = (46, 0) -- (56, 10)
-2018-04-15 21:07:58.167 [JavaFX Application Thread] INFO  edu.cuny.brooklyn.project.TreasureHuntFXApp edu.cuny.brooklyn.project.TreasureHuntFXApp.start(TreasureHuntFXApp.java:32) - TreasureHuntFXApp exits.
-2018-04-15 21:08:03.245 [JavaFX Application Thread] DEBUG edu.cuny.brooklyn.project.puzzler.PuzzlerMaker edu.cuny.brooklyn.project.puzzler.PuzzlerMaker.make(PuzzlerMaker.java:11) - Puzzler type = 101
-2018-04-15 21:08:03.246 [JavaFX Application Thread] DEBUG edu.cuny.brooklyn.project.puzzler.PuzzlerMaker edu.cuny.brooklyn.project.puzzler.PuzzlerMaker.make(PuzzlerMaker.java:20) - Made a math puzzler: message = 10 * 7 = ? and answer = 70.0

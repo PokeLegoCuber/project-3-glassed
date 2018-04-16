@@ -64,7 +64,7 @@ public class SettingFrame extends Frame {
 		}
 		    
 		difficultyBox.setItems(options);
-		difficultyBox.getSelectionModel().select(GameSettings.getDifficulty());
+		difficultyBox.getSelectionModel().select(new Integer(GameSettings.getDifficulty()));
 
 		fullscreenBox = new CheckBox("start in fullscreen:");
 		fullscreenBox.setSelected(GameSettings.getFullscreen()); 

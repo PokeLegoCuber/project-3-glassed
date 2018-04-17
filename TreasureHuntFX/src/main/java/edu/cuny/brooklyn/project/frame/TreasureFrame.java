@@ -59,7 +59,7 @@ public class TreasureFrame extends Frame {
 	
 	private PuzzlerFrame nextFrame;
 	private Stage nextStage;
-	private Scene scene;
+	// private Scene scene;
 	
 	// for resizing
 	private InvalidationListener resizeListener = o -> redrawTreasure();
@@ -101,8 +101,8 @@ public class TreasureFrame extends Frame {
 	    
 		
 		root = borderPane;
-		scene = new Scene(root);
-		scene.getStylesheets().add("treasure.css");
+		// scene = new Scene(root);
+		// scene.getStylesheets().add("treasure.css");
 	}
 	
 	public TreasureField getTreasureField() {
@@ -128,14 +128,15 @@ public class TreasureFrame extends Frame {
 	    //VBox root = new VBox();
 	    //root.getChildren().addAll(exitBtn);
 	    //Scene scene= new Scene(root,-100,100);
-	    if(GameSettings.getFullscreen()) {
-	    	stage.getScene().setRoot(root);
-	    } else {
-	    	stage.setScene(scene);
-	    }
-	    
+		
+		stage.getScene().setRoot(root);
+		
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_TREASURE_HUNT_KEY));
 		stage.show();
+	}
+	
+	public void asRootOf(Scene scene) {
+		scene.setRoot(root);
 	}
 	
 	public void setNextFrameToShow(PuzzlerFrame puzzlerFrame, Stage stage) {
@@ -249,12 +250,6 @@ public class TreasureFrame extends Frame {
 			responseLabel.setText(I18n.getBundle().getString(MSG_NO_LABEL_AT_LOCATION_KEY) + " (" + xInput + "," + yInput + ")");
 		}
 
-	}
-	
-	private void resumeGuessing() {
-		clueLabel.setVisible(true);
-		responseLabel.setVisible(true);
-		xyInputPane.setDisable(false);
 	}
 	
 	private void doneGuessing() {

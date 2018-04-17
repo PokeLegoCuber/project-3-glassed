@@ -23,7 +23,7 @@ public class FlashFrame extends Frame {
 	}
 
 	public void setNextFrameToShow(PuzzlerFrame puzzlerFrame, Stage stage) {
-		startButton.setOnAction(e -> puzzlerFrame.show(stage));
+		startButton.setOnAction(e -> puzzlerFrame.initScene(stage));
 	}
 	
 	public void setConfigFrame(SettingFrame settingFrame, Stage stage) {

@@ -24,7 +24,6 @@ public class PuzzlerFrame extends Frame {
 	private PuzzlerMaker puzzlerMaker;
 	private Puzzler puzzler;
 	private int  answeringAttempts;
-//	private Scene scene;
 	private VBox root;
 	private Label puzzlerLabel;
 	private Label difficultyLabel;
@@ -80,19 +79,26 @@ public class PuzzlerFrame extends Frame {
 		puzzler = puzzlerMaker.make();
 		puzzlerLabel.setText(puzzler.getMessage());
 		answeringAttempts = 0;
-		stage.setFullScreen(GameSettings.getFullscreen());
-		
-	    if(GameSettings.getFullscreen()) {
-	    	stage.getScene().setRoot(root);
-	    } else {
-	    	stage.setScene(scene);
-	    }
-	    stage.setFullScreen(GameSettings.getFullscreen());
+
+		scene.setRoot(root);
 	    
 	    stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_PUZZLER_KEY));
 		stage.show();
 	}
 
+	public void initScene(Stage stage) {
+		if(!GameSettings.getFullscreen()) {
+			// hack
+			nextFrame.asRootOf(scene);
+			stage.setScene(scene);
+			stage.sizeToScene();
+			stage.getScene().setRoot(root);
+		} else {
+			stage.setScene(scene);
+		}
+		stage.setFullScreen(GameSettings.getFullscreen());
+		show(stage);
+	}
 
 	private void buildScene() {
 	    Button exitBtn = new Button("Exit");

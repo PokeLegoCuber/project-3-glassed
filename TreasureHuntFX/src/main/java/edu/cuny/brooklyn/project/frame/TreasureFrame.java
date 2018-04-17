@@ -101,6 +101,7 @@ public class TreasureFrame extends Frame {
 		
 		root = borderPane;
 		scene = new Scene(root);
+		scene.getStylesheets().add("treasure.css");
 	}
 	
 	public TreasureField getTreasureField() {

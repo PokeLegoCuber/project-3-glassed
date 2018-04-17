@@ -74,6 +74,7 @@ public class SettingFrame extends Frame {
 		
 		vbox.getChildren().addAll(flashLabel, difficultyHbox, fullscreenBox, backButton);
 		scene = new Scene(vbox, GameSettings.SCENE_WIDTH, GameSettings.CANVAS_HEIGHT);
+		scene.getStylesheets().add("styles.css");
 	}
 
 }

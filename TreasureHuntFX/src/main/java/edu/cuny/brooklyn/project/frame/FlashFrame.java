@@ -48,6 +48,7 @@ public class FlashFrame extends Frame {
 		startButton = new Button(I18n.getBundle().getString(MSG_START_GAME_KEY));
 		vbox.getChildren().addAll(flashLabel, startButton, settingButton, exitBtn);
 		scene = new Scene(vbox, GameSettings.SCENE_WIDTH, GameSettings.CANVAS_HEIGHT);
+		scene.getStylesheets().add("styles.css");
 	}
 
 }

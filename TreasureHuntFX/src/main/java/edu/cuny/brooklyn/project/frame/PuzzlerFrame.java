@@ -106,6 +106,7 @@ public class PuzzlerFrame extends Frame {
 		vbox.getChildren().addAll(puzzlerLabel, difficultyLabel, puzzlerAnswer, answerButton, exitBtn);
 		root = vbox; //, GameSettings.SCENE_WIDTH, GameSettings.CANVAS_HEIGHT);
 		scene = new Scene(root);
+		scene.getStylesheets().add("styles.css");
 	}
 	
 	private void updateDifficultyLabel() {

@@ -45,6 +45,7 @@ public class TreasureFrame extends Frame {
 	private BorderPane root;
 	private Label totalScoreLabel;
 	private Label roundScoreLabel;
+	private Label failedAttemptsLabel;
 	
 	private Canvas canvas;
 	private Label clueLabel;
@@ -54,6 +55,11 @@ public class TreasureFrame extends Frame {
 	private TextField xPosTreasure;
 	private TextField yPosTreasure;
 	private Button buttonTreasure;
+	private Button continueBtn;
+	
+	private PuzzlerFrame nextFrame;
+	private Stage nextStage;
+	private Scene scene;
 	
 	// for resizing
 	private InvalidationListener resizeListener = o -> redrawTreasure();
@@ -76,20 +82,34 @@ public class TreasureFrame extends Frame {
 		borderPane.setBottom(xyInputPane);
 		
 		pane.setOnMouseClicked(e -> { 
-		xPosTreasure.setText("" + (int)e.getX());//to convert to string
-		yPosTreasure.setText("" + (int)e.getY());
+			xPosTreasure.setText("" + (int)e.getX());//to convert to string
+			yPosTreasure.setText("" + (int)e.getY());
 		});
 
+	    continueBtn.setOnAction(e -> {
+	    	clearCanvas();
+
+	    	scorer.nextRound();
+	    	failedAttemptsLabel.setText(String.format(GameSettings.SCORE_FORMAT, puzzlerAttempts));
+	    	totalScoreLabel.setText(String.format(GameSettings.SCORE_FORMAT, scorer.getTotalScore()));
+			roundScoreLabel.setText(String.format(GameSettings.SCORE_FORMAT, scorer.getRoundScore()));
+	    	
+	    	
+	    	nextFrame.show(nextStage);
+	    });
+	    
+		
 		root = borderPane;
+		scene = new Scene(root);
 	}
 	
 	public TreasureField getTreasureField() {
 		return treasureField;
 	}
 	
-
 	public void setAttempts(int answeringAttempts) {
 		puzzlerAttempts = answeringAttempts;
+		failedAttemptsLabel.setText(String.format(GameSettings.SCORE_FORMAT, puzzlerAttempts));
 	}
 
 	public void startLocatingTreasure(String clue) {
@@ -109,11 +129,16 @@ public class TreasureFrame extends Frame {
 	    if(GameSettings.getFullscreen()) {
 	    	stage.getScene().setRoot(root);
 	    } else {
-	    	stage.setScene(new Scene(root));
+	    	stage.setScene(scene);
 	    }
 	    
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_TREASURE_HUNT_KEY));
 		stage.show();
+	}
+	
+	public void setNextFrameToShow(PuzzlerFrame puzzlerFrame, Stage stage) {
+		nextFrame = puzzlerFrame;
+		nextStage = stage;
 	}
 	
 	private Pane buildScorePane() {
@@ -124,11 +149,15 @@ public class TreasureFrame extends Frame {
 		
 		Button exitBtn = new Button("Exit");
 	    exitBtn.setOnAction(e -> System.exit(0));
-	    Button continueBtn = new Button("Continue?");
-	    continueBtn.setOnAction(e -> System.exit(0));
+	    continueBtn = new Button("Continue?");
+	    
+	    failedAttemptsLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
 		totalScoreLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
 		roundScoreLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
-		hbox.getChildren().addAll(new Label(I18n.getBundle().getString(MSG_TOTAL_SCORE_KEY)),
+		hbox.getChildren().addAll(
+				new Label("attempts:"),
+				failedAttemptsLabel,
+				new Label(I18n.getBundle().getString(MSG_TOTAL_SCORE_KEY)),
 				totalScoreLabel,
 				new Label(I18n.getBundle().getString(MSG_ROUND_SCORE_KEY)),
 				roundScoreLabel,continueBtn, exitBtn);
@@ -218,6 +247,12 @@ public class TreasureFrame extends Frame {
 			responseLabel.setText(I18n.getBundle().getString(MSG_NO_LABEL_AT_LOCATION_KEY) + " (" + xInput + "," + yInput + ")");
 		}
 
+	}
+	
+	private void resumeGuessing() {
+		clueLabel.setVisible(true);
+		responseLabel.setVisible(true);
+		xyInputPane.setDisable(false);
 	}
 	
 	private void doneGuessing() {

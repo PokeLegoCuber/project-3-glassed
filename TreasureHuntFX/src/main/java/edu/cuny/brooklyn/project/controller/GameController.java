@@ -34,6 +34,7 @@ public class GameController {
 		flashFrame.setNextFrameToShow(puzzlerFrame, stage);
 		flashFrame.setConfigFrame(settingFrame, stage);
 		puzzlerFrame.setNextFrameToShow(treasureFrame, stage);
+		treasureFrame.setNextFrameToShow(puzzlerFrame, stage);
 		
 
 		flashFrame.show(stage);

@@ -19,6 +19,10 @@ public class Scorer {
 	public int getRoundScore() {
 		return roundScore;
 	}
+	
+	public void nextRound() {
+		roundScore = 0;
+	}
 
 	public void updateScore(int attempts) {
 		roundScore =  GameSettings.MAX_SCORE - (attempts - 1) * GameSettings.SCORE_PENALTY;

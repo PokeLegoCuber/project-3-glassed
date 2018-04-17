@@ -122,12 +122,16 @@ public class TreasureFrame extends Frame {
 		hbox.setSpacing(GameSettings.H_SPACING);
 		hbox.setPadding(GameSettings.PADDING);
 		
+		Button exitBtn = new Button("Exit");
+	    exitBtn.setOnAction(e -> System.exit(0));
+	    Button continueBtn = new Button("Continue?");
+	    continueBtn.setOnAction(e -> System.exit(0));
 		totalScoreLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
 		roundScoreLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
 		hbox.getChildren().addAll(new Label(I18n.getBundle().getString(MSG_TOTAL_SCORE_KEY)),
 				totalScoreLabel,
 				new Label(I18n.getBundle().getString(MSG_ROUND_SCORE_KEY)),
-				roundScoreLabel);
+				roundScoreLabel,continueBtn, exitBtn);
 		return hbox;
 	}
 	
@@ -176,10 +180,9 @@ public class TreasureFrame extends Frame {
 		buttonTreasure = new Button(I18n.getBundle().getString(MSG_LOCATE_TREASURE_KEY));
 		buttonTreasure.setOnAction(e -> doTreasureLocationAction());
 		
-	    Button exitBtn = new Button("Exit");
-	    exitBtn.setOnAction(e -> System.exit(0));
+	    
 		
-		hbox.getChildren().addAll(xPosTreasure, yPosTreasure, buttonTreasure, exitBtn);
+		hbox.getChildren().addAll(xPosTreasure, yPosTreasure, buttonTreasure);
 
 		return hbox;
 	}

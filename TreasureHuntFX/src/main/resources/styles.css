@@ -1,0 +1,27 @@
+.root{
+    -fx-background: #ffab40;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-text-align: center;
+}
+
+Label {
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #fafafa;
+    -fx-font-size: 36px;
+}
+
+Button {
+    -fx-font-family: "Comic Sans MS";
+    -fx-background-color: #c77c02;
+    -fx-text-fill: #fafafa;
+    -fx-font-size: 24px;
+}
+
+Button:hover {
+    -fx-background-color: #ffdd71;
+}
+
+Button:pressed {
+    -fx-background-insets: 2 2 1 1;
+}

@@ -94,7 +94,8 @@ public class TreasureFrame extends Frame {
 	    	totalScoreLabel.setText(String.format(GameSettings.SCORE_FORMAT, scorer.getTotalScore()));
 			roundScoreLabel.setText(String.format(GameSettings.SCORE_FORMAT, scorer.getRoundScore()));
 	    	
-	    	
+	    	xPosTreasure.clear();
+	    	yPosTreasure.clear();
 	    	nextFrame.show(nextStage);
 	    });
 	    

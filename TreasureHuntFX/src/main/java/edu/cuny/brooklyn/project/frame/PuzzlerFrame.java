@@ -56,6 +56,7 @@ public class PuzzlerFrame extends Frame {
 			return;
 		} else {
 			LOGGER.debug("User's answer to the puzzler is correct, move on to locate the treasure." );
+			puzzlerAnswer.clear();
 			String clue = TreasureClue.getClue(nextFrame.getTreasureField().getTreasureXLeft(),
 					nextFrame.getTreasureField().getTreasureYTop(),
 					nextFrame.getTreasureField().getTreasureBoundingBoxWidth(),

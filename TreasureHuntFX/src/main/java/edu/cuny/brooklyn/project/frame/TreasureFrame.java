@@ -179,6 +179,9 @@ public class TreasureFrame extends Frame {
 		canvas = new Canvas(GameSettings.CANVAS_WIDTH, GameSettings.CANVAS_HEIGHT);
 		canvasHolder.getChildren().add(canvas);
 		
+		// temporary workaround for invisible clue text
+		canvasHolder.setStyle("-fx-background-color: grey");
+		
 		VBox vbox = new VBox();
 		vbox.setAlignment(Pos.CENTER);
 		vbox.setSpacing(GameSettings.V_SPACING);

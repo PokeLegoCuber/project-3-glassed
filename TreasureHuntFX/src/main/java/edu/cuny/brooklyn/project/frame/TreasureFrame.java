@@ -243,8 +243,7 @@ public class TreasureFrame extends Frame {
 		Point2D center = new Point2D(clue.getX(), clue.getY());
 		
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		//gc.fillOval(center.getX()-radius, center.getY()-radius, radius, radius);
-		gc.fillOval(center.getX()-clue.getX()-radius, center.getY()-clue.getY()-radius, radius, radius);
+		gc.fillOval(center.getX()-radius, center.getY()-radius, radius, radius);
 	}
 	
 	private void clearCanvas() {

@@ -56,12 +56,13 @@ public class PuzzlerFrame extends Frame {
 		} else {
 			LOGGER.debug("User's answer to the puzzler is correct, move on to locate the treasure." );
 			puzzlerAnswer.clear();
-			String clue = TreasureClue.getClue(nextFrame.getTreasureField().getTreasureXLeft(),
+			TreasureClue clue = TreasureClue.getClue(nextFrame.getTreasureField().getTreasureXLeft(),
 					nextFrame.getTreasureField().getTreasureYTop(),
 					nextFrame.getTreasureField().getTreasureBoundingBoxWidth(),
 					nextFrame.getTreasureField().getTreasureBoundingBoxLength(),
-					answeringAttempts);		
-			nextFrame.startLocatingTreasure(clue);
+					answeringAttempts);	
+			nextFrame.setClue(clue);
+			nextFrame.startLocatingTreasure(clue.getClueTxt());
 			nextFrame.setAttempts(answeringAttempts);
 			nextFrame.show(nextStage);
 		}

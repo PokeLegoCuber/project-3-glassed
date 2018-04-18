@@ -9,6 +9,7 @@ import edu.cuny.brooklyn.project.score.Scorer;
 import edu.cuny.brooklyn.project.treasure.TreasureField;
 import javafx.beans.InvalidationListener;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -59,7 +60,7 @@ public class TreasureFrame extends Frame {
 	
 	private PuzzlerFrame nextFrame;
 	private Stage nextStage;
-	// private Scene scene;
+	private TreasureClue clue;
 	
 	// for resizing
 	private InvalidationListener resizeListener = o -> redrawTreasure();
@@ -114,6 +115,10 @@ public class TreasureFrame extends Frame {
 		failedAttemptsLabel.setText(String.format(GameSettings.SCORE_FORMAT, puzzlerAttempts));
 	}
 
+	public void setClue(TreasureClue c) {
+		clue = c;
+	}
+	
 	public void startLocatingTreasure(String clue) {
 		clueLabel.setText(clue);
 		clueLabel.setVisible(true);
@@ -212,13 +217,25 @@ public class TreasureFrame extends Frame {
 		buttonTreasure = new Button(I18n.getBundle().getString(MSG_LOCATE_TREASURE_KEY));
 		buttonTreasure.setOnAction(e -> doTreasureLocationAction());
 		
-	    
+		// showcase only please remove this code
+		Button circleButton = new Button("highlight");
+		circleButton.setOnAction(e -> drawClueCircle());
 		
-		hbox.getChildren().addAll(xPosTreasure, yPosTreasure, buttonTreasure);
+		hbox.getChildren().addAll(circleButton, xPosTreasure, yPosTreasure, buttonTreasure);
 
 		return hbox;
 	}
 	
+	private void drawClueCircle() {
+		if(clue == null)
+			return;
+		
+		int radius = clue.getClueError();
+		Point2D center = new Point2D(clue.getX(), clue.getY());
+		
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+		gc.fillOval(center.getX()-radius, center.getY()-radius, radius, radius);
+	}
 	
 	private void clearCanvas() {
 		canvas.getGraphicsContext2D().clearRect(0,  0,  canvas.getWidth(), canvas.getHeight());

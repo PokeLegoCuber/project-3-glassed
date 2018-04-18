@@ -241,7 +241,7 @@ public class TreasureFrame extends Frame {
 		
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		//gc.fillOval(center.getX()-radius, center.getY()-radius, radius, radius);
-		gc.fillOval(xPosTreasure.getWidth(),yPosTreasure.getHeight(),center.getX(), center.getY());
+		gc.fillOval(center.getX()-clue.getX()-radius, center.getY()-clue.getY()-radius, radius, radius);
 	}
 	
 	private void clearCanvas() {

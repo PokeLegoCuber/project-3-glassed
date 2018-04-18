@@ -135,6 +135,9 @@ public class TreasureFrame extends Frame {
 	    //root.getChildren().addAll(exitBtn);
 	    //Scene scene= new Scene(root,-100,100);
 		
+		exitBtn.setVisible(false);
+		continueBtn.setVisible(false);
+		
 		stage.getScene().setRoot(root);
 		
 		stage.setTitle(I18n.getBundle().getString(MSG_APP_TITLE_TREASURE_HUNT_KEY));
@@ -156,7 +159,7 @@ public class TreasureFrame extends Frame {
 		hbox.setSpacing(GameSettings.H_SPACING);
 		hbox.setPadding(GameSettings.PADDING);
 		
-		Button exitBtn = new Button("Exit");
+		exitBtn = new Button("Exit");
 	    	exitBtn.setOnAction(e -> System.exit(0));
 	    	continueBtn = new Button("Continue?");
 		exitBtn.setVisible(false);

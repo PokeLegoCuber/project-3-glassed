@@ -61,6 +61,7 @@ public class TreasureFrame extends Frame {
 	private PuzzlerFrame nextFrame;
 	private Stage nextStage;
 	private TreasureClue clue;
+	private Button exitBtn;
 	
 	// for resizing
 	private InvalidationListener resizeListener = o -> redrawTreasure();
@@ -156,10 +157,12 @@ public class TreasureFrame extends Frame {
 		hbox.setPadding(GameSettings.PADDING);
 		
 		Button exitBtn = new Button("Exit");
-	    exitBtn.setOnAction(e -> System.exit(0));
-	    continueBtn = new Button("Continue?");
+	    	exitBtn.setOnAction(e -> System.exit(0));
+	    	continueBtn = new Button("Continue?");
+		exitBtn.setVisible(false);
+		continueBtn.setVisible(false);
 	    
-	    failedAttemptsLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
+	    	failedAttemptsLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
 		totalScoreLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
 		roundScoreLabel = new Label(String.format(GameSettings.SCORE_FORMAT, 0));
 		hbox.getChildren().addAll(
@@ -234,10 +237,11 @@ public class TreasureFrame extends Frame {
 			return;
 		
 		int radius = clue.getClueError();
-		Point2D center = new Point2D(clue.getX(), clue.getY());
+		Point2D center = new Point2D(1100, 350);
 		
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		gc.fillOval(center.getX()-radius, center.getY()-radius, radius, radius);
+		//gc.fillOval(center.getX()-radius, center.getY()-radius, radius, radius);
+		gc.fillOval(xPosTreasure.getWidth(),yPosTreasure.getHeight(),center.getX(), center.getY());
 	}
 	
 	private void clearCanvas() {
@@ -263,6 +267,8 @@ public class TreasureFrame extends Frame {
 			LOGGER.debug("Found treasure at location (" + xInput + "," + yInput + ")");
 			doneGuessing();
 			showTreasure();
+			exitBtn.setVisible(true);
+			continueBtn.setVisible(true);
 			updateScore();
 		} else {
 			LOGGER.debug("No treasure at location (" + xInput + "," + yInput + ")");

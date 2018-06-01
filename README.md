@@ -4,7 +4,7 @@
 This repository contains the start-up code of class projects in
 CISC 3120 Sections MW8 and MW2, Spring 2018
 
-Website link: https://cisc3120sp18.github.io/project-3-glassed/
+Website link: https://pokelegocuber.github.io/project-3-glassed/
 
 2.1 Aaron and Jefferson
 

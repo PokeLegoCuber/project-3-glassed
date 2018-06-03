@@ -19,3 +19,5 @@ Website link: https://pokelegocuber.github.io/project-3-glassed/
 - Project 3: TreasureHuntFX
 
 ![alt text](chest_fx.png "Image of Treasure Chest")
+
+There may be material used that are copyrighted. No copyright infringement is intended. The potentially copyrighted material is used for entertainment purposes. All right's belong to it's rightful owners.
